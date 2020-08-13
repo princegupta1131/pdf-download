@@ -7,7 +7,7 @@
       "root": "projects/pdf-download",
       "sourceRoot": "projects/pdf-download/src",
       "projectType": "library",
-      "prefix": "lib",
+      "prefix": "sb",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-pdf-download',
+  selector: 'sb-pdf-download',
   template: `
     <p>
       pdf-download works!
