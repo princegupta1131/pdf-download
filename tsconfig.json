@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "pdf-download": [
+        "dist/pdf-download"
+      ],
+      "pdf-download/*": [
+        "dist/pdf-download/*"
+      ]
+    }
   }
 }
