@@ -11,6 +11,9 @@ export class CertificateDownloadAsPdfService {
   ) { }
 
   async download(template: string) {
+    if (template.startsWith('data:image/svg+xml,')) {
+      template = decodeURIComponent(template.replace(/data:image\/svg\+xml,/, '')).replace(/\<!--\s*[a-zA-Z0-9\-]*\s*--\>/g, '');
+    }
     const canvasElement = CertificateDirectivesUtility.appendGhostCanvas(
       'sbCertificateDownloadAsPdfCanvas' + Date.now(),
       {
