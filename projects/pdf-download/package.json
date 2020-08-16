@@ -1,6 +1,17 @@
 {
-  "name": "pdf-download",
+  "name": "sb-svg2pdf",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsvick/pdf-download.git"
+  },
+  "keywords": [
+    "angular",
+    "components",
+    "sunbird",
+    "pdf",
+    "svg download"
+  ],
   "peerDependencies": {
     "@angular/common": "^7.1.0",
     "@angular/core": "^7.1.0",
