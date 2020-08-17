@@ -17,7 +17,7 @@ export class CertificateDirectivesUtility {
 
   static extractFileName(template: string): string {
     try {
-      return template.match(/(?:[^\/][\d\w\.]+)(?<=(?:\.svg))/)[0].split('.')[0] || 'certificate';
+      return template.split('/').pop().indexOf('.svg') === -1 ? 'certificate' : template.split('/').pop().split('.svg')[0];
     } catch (e) {
       return 'certificate';
     }
