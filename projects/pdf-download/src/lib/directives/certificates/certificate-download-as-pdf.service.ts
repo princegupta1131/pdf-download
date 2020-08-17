@@ -10,7 +10,7 @@ export class CertificateDownloadAsPdfService {
     @Inject('JSPDF') private jsPDFModule,
   ) { }
 
-  async download(template: string) {
+  async download(template: string, handlePdfData?: (fileName: string, pdfData: Blob) => void) {
     if (template.startsWith('data:image/svg+xml,')) {
       template = decodeURIComponent(template.replace(/data:image\/svg\+xml,/, '')).replace(/\<!--\s*[a-zA-Z0-9\-]*\s*--\>/g, '');
     }
@@ -34,7 +34,12 @@ export class CertificateDownloadAsPdfService {
     const JsPDF = await this.jsPDFModule;
     const pdf = new JsPDF({ orientation: 'landscape' });
     pdf.addImage(imgData, 'PNG', 10, 10);
-    pdf.save(filename + '.pdf');
+
+    if (handlePdfData) {
+      handlePdfData(filename + '.pdf', pdf.output('blob'));
+    } else {
+      pdf.save(filename + '.pdf');
+    }
 
     canvasElement.remove();
   }
