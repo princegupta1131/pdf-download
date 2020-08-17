@@ -10,7 +10,7 @@ export class CertificateDownloadAsPdfService {
     @Inject('JSPDF') private jsPDFModule,
   ) { }
 
-  async download(template: string, handlePdfData?: (fileName: string, pdfData: Blob) => void) {
+  async download(template: string, handlePdfData?: (fileName: string, pdfData: Blob) => void, fileName?: string) {
     if (template.startsWith('data:image/svg+xml,')) {
       template = decodeURIComponent(template.replace(/data:image\/svg\+xml,/, '')).replace(/\<!--\s*[a-zA-Z0-9\-]*\s*--\>/g, '');
     }
@@ -25,7 +25,7 @@ export class CertificateDownloadAsPdfService {
     const Canvg = await this.canvgModule;
     const canvg = await Canvg.from(context, template);
 
-    const filename = CertificateDirectivesUtility.extractFileName(template);
+    fileName = fileName || CertificateDirectivesUtility.extractFileName(template);
 
     canvg.start();
     await canvg.ready();
@@ -36,9 +36,9 @@ export class CertificateDownloadAsPdfService {
     pdf.addImage(imgData, 'PNG', 10, 10);
 
     if (handlePdfData) {
-      handlePdfData(filename + '.pdf', pdf.output('blob'));
+      handlePdfData(fileName + '.pdf', pdf.output('blob'));
     } else {
-      pdf.save(filename + '.pdf');
+      pdf.save(fileName + '.pdf');
     }
 
     canvasElement.remove();
