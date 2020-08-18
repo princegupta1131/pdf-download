@@ -38,9 +38,9 @@ export class CertificateDownloadAsPdfService {
       const JsPDF = await this.jsPDFModule;
       const pdf = new JsPDF({
         orientation: 'landscape',
-        unit: 'mm',
+        unit: 'pt',
         format: [
-          1060 * 0.352778 / 1.333, 750 * 0.352778 / 1.333
+          1060 / 1.33, 750 / 1.33
         ]
       });
       pdf.addImage(blob, 'PNG', 0, 0);
@@ -53,7 +53,7 @@ export class CertificateDownloadAsPdfService {
         pdf.save(fileName + '.pdf');
       }
 
-      // canvasElement.remove();
+      canvasElement.remove();
     });
   }
 }
