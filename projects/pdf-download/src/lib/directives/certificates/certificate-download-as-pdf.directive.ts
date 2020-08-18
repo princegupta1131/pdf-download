@@ -1,6 +1,5 @@
 import {Directive, HostListener, Inject, Input} from '@angular/core';
-import {CertificateDirectivesUtility} from './certificate-directives-utility';
-import { CertificateDownloadAsPdfService } from './certificate-download-as-pdf.service';
+import {CertificateDownloadAsPdfService} from './certificate-download-as-pdf.service';
 
 @Directive({
   selector: '[sbCertificateDownloadAsPdf]',
