@@ -1,5 +1,4 @@
 import {NgModule} from '@angular/core';
-import {CertificateDownloadAsImageDirective} from './certificate-download-as-image.directive';
 import {CertificateDownloadAsPdfDirective} from './certificate-download-as-pdf.directive';
 
 export function normalizeCommonJSImport<T = any>(
@@ -11,19 +10,19 @@ export function normalizeCommonJSImport<T = any>(
   });
 }
 
-let canvgImport;
+let domtoimageImport;
 
-export function canvgFactory() {
-  if (!canvgImport) {
+export function domtoimageFactory() {
+  if (!domtoimageImport) {
     return normalizeCommonJSImport(
       // @dynamic
-      import(/* webpackChunkName: "canvg" */ 'canvg')
+      import(/* webpackChunkName: "domtoimage" */ 'dom-to-image')
     ).then(function(i) {
-      canvgImport = i;
-      return canvgImport;
+      domtoimageImport = i;
+      return domtoimageImport;
     });
   }
-  return canvgImport;
+  return domtoimageImport;
 }
 
 let jspdfImport;
@@ -44,15 +43,13 @@ export function jsPdfFactory() {
 
 @NgModule({
   declarations: [
-    CertificateDownloadAsImageDirective,
     CertificateDownloadAsPdfDirective
   ],
   exports: [
-    CertificateDownloadAsImageDirective,
     CertificateDownloadAsPdfDirective
   ],
   providers: [
-    {provide: 'CANVG', useFactory: canvgFactory},
+    {provide: 'DOMTOIMAGE', useFactory: domtoimageFactory},
     {provide: 'JSPDF', useFactory: jsPdfFactory},
   ]
 })

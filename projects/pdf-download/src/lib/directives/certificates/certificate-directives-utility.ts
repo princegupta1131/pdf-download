@@ -1,18 +1,19 @@
 export class CertificateDirectivesUtility {
-  static appendGhostCanvas(
+  static appendGhostDiv(
     id: string,
     dimensions: {
       width: number,
       height: number
     }
-  ): HTMLCanvasElement {
-    const canvasElement = document.createElement('canvas');
-    canvasElement.id = id;
-    canvasElement.height = dimensions.height;
-    canvasElement.width = dimensions.width;
-    canvasElement.style.display = 'none';
-    document.body.appendChild(canvasElement);
-    return canvasElement;
+  ): HTMLDivElement {
+    const divElement = document.createElement('div');
+    divElement.id = id;
+    divElement.style.position = 'absolute';
+    divElement.style.left = -dimensions.width + 'px';
+    divElement.style.height = dimensions.height + '[x';
+    divElement.style.width = dimensions.width + 'px';
+    document.body.appendChild(divElement);
+    return divElement;
   }
 
   static extractFileName(template: string): string {

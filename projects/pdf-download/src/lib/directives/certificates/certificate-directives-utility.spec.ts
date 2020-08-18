@@ -9,7 +9,7 @@ describe('CertificateDirectivesUtility', () => {
     });
 
     it('should create a hidden ghost canvas element as a child of body', () => {
-      CertificateDirectivesUtility.appendGhostCanvas(testId, {width: 1024, height: 768});
+      CertificateDirectivesUtility.appendGhostDiv(testId, {width: 1024, height: 768});
 
       expect(document.getElementById('testId')).toBeTruthy();
     });
