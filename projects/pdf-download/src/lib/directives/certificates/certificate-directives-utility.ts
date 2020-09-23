@@ -10,8 +10,9 @@ export class CertificateDirectivesUtility {
     divElement.id = id;
     divElement.style.position = 'absolute';
     divElement.style.left = -dimensions.width + 'px';
-    divElement.style.height = dimensions.height + '[x';
+    divElement.style.height = dimensions.height + 'px';
     divElement.style.width = dimensions.width + 'px';
+    divElement.style.letterSpacing = 'normal';
     document.body.appendChild(divElement);
     return divElement;
   }
