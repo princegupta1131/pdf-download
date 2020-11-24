@@ -8,7 +8,7 @@ export class CertificateDirectivesUtility {
   ): HTMLDivElement {
     const divElement = document.createElement('div');
     divElement.id = id;
-    divElement.style.position = 'absolute';
+    // divElement.style.position = 'absolute';
     divElement.style.left = -dimensions.width + 'px';
     divElement.style.height = dimensions.height + 'px';
     divElement.style.width = dimensions.width + 'px';
